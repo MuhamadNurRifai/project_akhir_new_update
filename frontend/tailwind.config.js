@@ -5,6 +5,7 @@ module.exports = {
     "../backend/resources/views/**/*.blade.php", // Jika ada blade
     "../backend/resources/js/**/*.{js,jsx,ts,tsx}", // Kalau backend juga punya React/Vue
   ],
+  darkMode: 'class', // Enable dark mode with class strategy
   theme: {
     extend: {},
   },

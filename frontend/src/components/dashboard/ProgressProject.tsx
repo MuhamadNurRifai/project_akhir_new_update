@@ -18,7 +18,7 @@ const ProgressBar: FC<{ value: number; color: string }> = ({ value, color }) => 
 const ProgressProject: FC<{ projects: ProjectProgress[] }> = ({ projects }) => {
   return (
     <div className="bg-white shadow-sm rounded-xl p-6">
-      <h3 className="text-base font-semibold mb-4">Progress Project</h3>
+      <h3 className="text-base text-black font-semibold mb-4">Progress Project</h3>
       <div className="space-y-4">
         {projects.map((p, idx) => (
           <div key={p.id} className="space-y-1">

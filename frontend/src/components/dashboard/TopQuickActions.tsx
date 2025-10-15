@@ -73,21 +73,22 @@ const TopQuickActions: FC<TopQuickActionsProps> = () => {
           {notifications.length === 0 ? (
             <p className="text-gray-500 text-xs">Belum ada notifikasi</p>
           ) : (
-            <ul className="space-y-2">
-              {notifications.map((n) => (
-                <li
-                  key={n.id}
-                  onClick={() => handleClick(n)}
-                  className={`p-2 rounded-md text-sm cursor-pointer ${
-                    n.read
-                      ? "bg-gray-300 text-black"
-                      : "bg-green-400 font-semibold text-black"
-                  }`}
-                >
-                  {n.message}
-                </li>
-              ))}
-            </ul>
+<ul className="space-y-2">
+  {[...notifications].reverse().map((n) => (
+    <li
+      key={n.id}
+      onClick={() => handleClick(n)}
+      className={`p-2 rounded-md text-sm cursor-pointer ${
+        n.read
+          ? "bg-gray-300 text-black"
+          : "bg-green-400 font-semibold text-black"
+      }`}
+    >
+      {n.message}
+    </li>
+  ))}
+</ul>
+
           )}
         </div>
       )}

@@ -15,13 +15,18 @@ class UserController extends Controller
         return User::all();
     }
 
+    public function show(User $user)
+    {
+        return response()->json($user);
+    }
+
     public function store(Request $request)
     {
         $data = $request->validate([
             'name' => 'required|string|max:100',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:6',
-            'role' => 'in:user,admin',
+            'role' => 'required|in:admin,designer,copywriter,web_designer',
         ]);
 
         $data['password'] = Hash::make($data['password']);
@@ -37,7 +42,7 @@ class UserController extends Controller
             'name' => 'sometimes|string|max:100',
             'email' => ['sometimes', 'email', Rule::unique('users')->ignore($user->id)],
             'password' => 'nullable|string|min:6',
-            'role' => 'in:user,admin',
+            'role' => 'sometimes|in:admin,designer,copywriter,web_designer',
         ]);
 
         if (isset($data['password'])) {

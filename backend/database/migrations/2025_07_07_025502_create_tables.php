@@ -13,7 +13,7 @@ return new class extends Migration
             $t->string('name');
             $t->string('email')->unique();
             $t->string('password_hash');
-            $t->enum('role', ['admin', 'pm', 'team', 'client']);
+            $t->enum('role', ['admin', 'designer', 'copywriter', 'web_designer']);
             $t->timestamps();
         });
 

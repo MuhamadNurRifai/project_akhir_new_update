@@ -12,7 +12,7 @@ const ProjectCount: React.FC<Props> = ({ projects }) => {
   const now = new Date();
 
   const filteredProjects = useMemo(() => {
-    return projects.filter((p) => {
+    return Array.isArray(projects) ? projects.filter((p) => {
       const created = new Date(p.created_at ?? Date.now());
 
       if (filter === "day") {
@@ -32,7 +32,7 @@ const ProjectCount: React.FC<Props> = ({ projects }) => {
         return created.getFullYear() === now.getFullYear();
       }
       return true;
-    });
+    }) : [];
   }, [projects, filter]);
 
   const activeCount = filteredProjects.filter((p) =>
@@ -50,7 +50,7 @@ const ProjectCount: React.FC<Props> = ({ projects }) => {
   return (
     <div className="bg-white shadow-sm rounded-xl p-6">
       <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-4">
-        <h3 className="text-lg font-semibold">Project Count</h3>
+        <h3 className="text-lg text-black font-semibold">Project Count</h3>
         <div className="flex flex-wrap gap-2">
           {(["all", "day", "month", "year"] as FilterType[]).map((f) => (
             <button

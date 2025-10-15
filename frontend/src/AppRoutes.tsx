@@ -10,16 +10,14 @@ import Unauthorized from "@/pages/Unauthorized";
 // Project/Client pages
 import ClientList from "@/pages/projects/ClientList";
 import ClientForm from "@/pages/projects/ClientForm";
-import ProjectList from "@/pages/projects/ProjectList";
-import ProjectForm from "@/pages/projects/ProjectForm";
 import TaskTable from "@/pages/projects/TaskTable";
 import TimelineView from "@/pages/projects/TimelineView";
-import TimeTracker from "@/pages/projects/TimeTracker";
-import AssignUser from "@/pages/projects/AssignUser";
+import Settings from "@/pages/Settings";
 
 
 // Admin user mgmt
 import UserList from "@/pages/users/UserList";
+import UserForm from "@/pages/users/UserForm";
 
 // Guards
 import RequireAuth from "@/components/requireAuth";
@@ -90,27 +88,6 @@ const AppRoutes = () => {
         }
       />
       <Route
-        path="/projects"
-        element={
-          <RequireAdmin>
-            <Layout>
-              <ProjectList />
-            </Layout>
-          </RequireAdmin>
-        }
-      />
-      <Route
-        path="/projects/new"
-        element={
-          <RequireAdmin>
-            <Layout>
-              <ProjectForm />
-            </Layout>
-          </RequireAdmin>
-        }
-      />
-     
-      <Route
         path="/tasks"
         element={
           <RequireAdmin>
@@ -131,23 +108,13 @@ const AppRoutes = () => {
         }
       />
       <Route
-        path="/time-tracker"
+        path="/settings"
         element={
-          <RequireAdmin>
+          <RequireAuth>
             <Layout>
-              <TimeTracker />
+              <Settings />
             </Layout>
-          </RequireAdmin>
-        }
-      />
-      <Route
-        path="/assign-user"
-        element={
-          <RequireAdmin>
-            <Layout>
-              <AssignUser />
-            </Layout>
-          </RequireAdmin>
+          </RequireAuth>
         }
       />
       <Route
@@ -156,6 +123,36 @@ const AppRoutes = () => {
           <RequireAdmin>
             <Layout>
               <UserList />
+            </Layout>
+          </RequireAdmin>
+        }
+      />
+      <Route
+        path="/users"
+        element={
+          <RequireAdmin>
+            <Layout>
+              <UserList />
+            </Layout>
+          </RequireAdmin>
+        }
+      />
+      <Route
+        path="/users/create"
+        element={
+          <RequireAdmin>
+            <Layout>
+              <UserForm />
+            </Layout>
+          </RequireAdmin>
+        }
+      />
+      <Route
+        path="/users/:id/edit"
+        element={
+          <RequireAdmin>
+            <Layout>
+              <UserForm />
             </Layout>
           </RequireAdmin>
         }

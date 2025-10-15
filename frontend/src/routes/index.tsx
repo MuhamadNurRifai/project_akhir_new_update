@@ -8,20 +8,17 @@ import Unauthorized from '@/pages/Unauthorized';
 import RequireAdmin from '@/components/requireAdmin';
 import AddUser from '@/pages/admin/AddUser';
 import EditUser from '@/pages/admin/EditUser';
-import AssignUser from '@/pages/projects/AssignUser';
-
 import ClientList from '@/pages/projects/ClientList';
-import ProjectForm from '@/pages/projects/ProjectForm';
-import ProjectList from '@/pages/projects/ProjectList';
 import TaskTable from '@/pages/projects/TaskTable';
 import TimelineView from '@/pages/projects/TimelineView';
+import Settings from '@/pages/Settings';
 import RequireAuth from '@/components/requireAuth';
 
 
 const routes = [
   {
     path: '/',
-    element: <Navigate to="/dashboard" />,
+    element: <Navigate to="/login" />,
   },
   {
     path: '/register',
@@ -33,7 +30,11 @@ const routes = [
   },
   {
     path: '/dashboard',
-    element: <Dashboard />,
+    element: (
+      <RequireAuth>
+        <Dashboard />
+      </RequireAuth>
+    ),
   },
   {
     path: '/admin/users',
@@ -87,39 +88,12 @@ const routes = [
       </RequireAdmin>
     ),
   },
-  {
-    path: '/projects/:projectId/assign',
-    element: (
-      <RequireAdmin>
-        <AssignUser />
-      </RequireAdmin>
-    ),
-  },
-
   // ✅ Client routes
   {
     path: '/clients',
     element: (
       <RequireAdmin>
         <ClientList />
-      </RequireAdmin>
-    ),
-  },
-  
-
-  {
-    path: '/projects',
-    element: (
-      <RequireAdmin>
-        <ProjectList />
-      </RequireAdmin>
-    ),
-  },
-  {
-    path: '/projects/new',
-    element: (
-      <RequireAdmin>
-        <ProjectForm />
       </RequireAdmin>
     ),
   },
@@ -137,6 +111,14 @@ const routes = [
       <RequireAdmin>
         <TimelineView />
       </RequireAdmin>
+    ),
+  },
+  {
+    path: '/settings',
+    element: (
+      <RequireAuth>
+        <Settings />
+      </RequireAuth>
     ),
   },
 ];

@@ -28,6 +28,7 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
+            'role' => fake()->randomElement(['admin', 'designer', 'copywriter', 'web_designer']),
             'remember_token' => Str::random(10),
         ];
     }
@@ -39,6 +40,46 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
+        ]);
+    }
+
+    /**
+     * Create a user with admin role.
+     */
+    public function admin(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'role' => 'admin',
+        ]);
+    }
+
+    /**
+     * Create a user with designer role.
+     */
+    public function designer(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'role' => 'designer',
+        ]);
+    }
+
+    /**
+     * Create a user with copywriter role.
+     */
+    public function copywriter(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'role' => 'copywriter',
+        ]);
+    }
+
+    /**
+     * Create a user with web designer role.
+     */
+    public function webDesigner(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'role' => 'web_designer',
         ]);
     }
 }

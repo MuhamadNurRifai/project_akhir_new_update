@@ -14,7 +14,7 @@ class RequireAdmin
     public function handle(Request $request, Closure $next): Response
     {
         // Jika tidak login atau bukan admin
-        if (!$request->user() || !$request->user()->is_admin) {
+        if (!$request->user() || $request->user()->role !== 'admin') {
             return response()->json(['message' => 'Unauthorized. Admin only.'], 403);
         }
 

@@ -33,7 +33,7 @@ const StatisticsChart: FC<{ stats: ProjectStats }> = ({ stats }) => {
 
   return (
     <div className="bg-white shadow-sm rounded-xl p-6">
-      <h3 className="text-base font-semibold mb-4">Statistics</h3>
+      <h3 className="text-base text-black font-semibold mb-4">Statistics</h3>
       <div className="max-w-xs mx-auto">
         <Doughnut data={data} options={options} />
       </div>

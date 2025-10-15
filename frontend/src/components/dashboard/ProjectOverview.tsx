@@ -15,7 +15,7 @@ export type Project = {
 const ProjectOverview = () => {
   return (
     <div className="rounded-xl bg-white p-4 shadow">
-      <h2 className="text-lg font-semibold">Project Overview</h2>
+      <h2 className="text-lg text-black font-semibold">Project Overview</h2>
       <p className="text-sm text-gray-500">
         Ringkasan progress dan detail proyek akan ditampilkan di sini.
       </p>
